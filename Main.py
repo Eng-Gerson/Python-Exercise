@@ -56,8 +56,22 @@ def Ex6():
 		print("Boa noite!")
 	else:
 		print("Valor inválido")
+
 def Ex7():
-	
+	while True:
+		salario = float(input("Insira o salário "))
+		if salario >= 0:
+			break
+		print("É para inserir salário e não dívida,insira um valor positivo")
+	if salario <= 5000:
+		salario += salario * 0.2
+	elif salario < 12000:
+		salario += salario * 0.15
+	elif salario < 25000:
+		salario += salario * 0.1
+	else:
+		salario += salario *0.05
+	print(f"O novo salário é {salario}")
 
 def Palindromo():
 	string = input("Insira uma string ")
