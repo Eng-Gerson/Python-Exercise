@@ -63,16 +63,22 @@ def Ex7():
 		if salario >= 0:
 			break
 		print("É para inserir salário e não dívida,insira um valor positivo")
+	print(f"Antes do reajuste o salário é {salario}")
 	if salario <= 5000:
-		salario += salario * 0.2
+		percentual = 0.2
+		salario += salario * percentual
 	elif salario < 12000:
-		salario += salario * 0.15
+		percentual = 0.15
+		salario += salario * percentual
 	elif salario < 25000:
-		salario += salario * 0.1
+		percentual = 0.1
+		salario += salario * percentual
 	else:
-		salario += salario *0.05
-	print(f"O novo salário é {salario}")
-
+		percentual  = 0.05
+		salario += salario * percentual
+	print(f"O percentual do aumento é {percentual*100}% \nO valor do aumento é {(percentual*salario)/(1+percentual)}\nNovo salário após o reajuste é {salario}")
+#def Ex8():
+	
 def Palindromo():
 	string = input("Insira uma string ")
 	string.lower()
