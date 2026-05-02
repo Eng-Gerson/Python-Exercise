@@ -48,11 +48,11 @@ def Ex5():
 
 def Ex6():
 	escolha = input("Qual é o seu turno?\nM-Matutino\nV-Vespertino\nN-Nocturno\nR:")
-	if escolha is 'M':
+	if escolha == 'M':
 		print("Bom dia!")
-	elif escolha is 'V':
+	elif escolha == 'V':
 		print('Boa tarde!')
-	elif escolha is "N":
+	elif escolha == "N":
 		print("Boa noite!")
 	else:
 		print("Valor inválido")
@@ -78,13 +78,32 @@ def Ex7():
 		salario += salario * percentual
 	print(f"O percentual do aumento é {percentual*100}% \nO valor do aumento é {round((percentual*salario)/(1+percentual),5)}\nNovo salário após o reajuste é {round(salario,5)}")
 
-#def Ex8():
+def Ex8():
+	Resposta =[[]] * 5
+	Resposta[0] = input("Telefonou para vítima? ")
+	Resposta[1] = input("Esteve no local do crime? ")
+	Resposta[2] = input("Mora perto da vítima? ")
+	Resposta[3] = input("Devia para a vítima? ")
+	Resposta[4] = input("Já trabalhou com a vítima? ")
+	contador = 0
+	for i in range(5):
+		Resposta[i] = Resposta[i].lower()
+		if Resposta[i] == "sim" or Resposta[i] == "s" or Resposta[i] == "y" or Resposta[i] == "yes" or Resposta[i] == "si":
+			contador = contador + 1
+	if contador == 2:
+		print("Suspeito")
+	elif contador == 3 or contador == 4:
+		print("Cúmplice")
+	elif contador == 5:
+		print("Assasino")
+	else:
+		print("Inocente")
 	
 def Palindromo():
 	string = input("Insira uma string ")
 	string.lower()
-	String = string[::-1]
-	if string == String:
+	if string[0::] == string[::-1]:
 		print("É palindromo")
 	else:
 		print("Não é palindromo")
+Ex8()
