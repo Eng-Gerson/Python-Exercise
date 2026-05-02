@@ -76,7 +76,8 @@ def Ex7():
 	else:
 		percentual  = 0.05
 		salario += salario * percentual
-	print(f"O percentual do aumento é {percentual*100}% \nO valor do aumento é {(percentual*salario)/(1+percentual)}\nNovo salário após o reajuste é {salario}")
+	print(f"O percentual do aumento é {percentual*100}% \nO valor do aumento é {round((percentual*salario)/(1+percentual),5)}\nNovo salário após o reajuste é {round(salario,5)}")
+
 #def Ex8():
 	
 def Palindromo():
