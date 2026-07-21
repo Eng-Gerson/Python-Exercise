@@ -127,5 +127,6 @@ def Collatz():
 		n = int(input("1 \nVai inserir outro número? \n1-Sim \n2-Não \nR: "))
 		if n == 2:
 			break
-	
+
+Ex1()
 		
