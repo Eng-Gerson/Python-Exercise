@@ -9,8 +9,7 @@ def Task1():
         "score": [8, 6, 9, 7]
     }
     df = pd.DataFrame(data)
-    df
-    df[["name"], ["score"]]
+    print(df)
     return df
 
 
@@ -47,4 +46,4 @@ def Task2():
     plt.ylabel("Score")
     plt.title("Scores from a pandas DataFrame")
     plt.show()
-Task2()
+Task1()

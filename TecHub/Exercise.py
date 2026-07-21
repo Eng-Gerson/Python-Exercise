@@ -1,3 +1,4 @@
+import pandas as pd
 import matplotlib.pyplot as plt
 results = pd.DataFrame({
     "student": ["Alice", "Bob", "Carol", "David"],
@@ -5,7 +6,7 @@ results = pd.DataFrame({
     "math_score": [7, 6, 8, 5]
 })
 
-results
+print(results)
 #Complete the following tasks:
 #1. Select only the `student` and `python_score` columns.
 #2. Define a function called `classify_result` that returns `"Passed"` for scores greater than or equal to 6 and `"Failed"` otherwise.
