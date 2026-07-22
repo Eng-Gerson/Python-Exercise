@@ -7,6 +7,18 @@ results = pd.DataFrame({
 })
 
 print(results)
+def classify_result(data):
+    for name,score in data[["student"],["python_score"]]:
+        classification = "Failed"
+        if score >= 6:
+            classification = "Passed"
+        print(f" Name: {name} Result:{classification}")
+classify_result(results)
+plt.bar(results["student"],results["python_score"])
+plt.xlabel("Estudante")
+plt.ylabel("Nota")
+plt.title("Notas de Python")
+plt.show()
 #Complete the following tasks:
 #1. Select only the `student` and `python_score` columns.
 #2. Define a function called `classify_result` that returns `"Passed"` for scores greater than or equal to 6 and `"Failed"` otherwise.

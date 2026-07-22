@@ -25,6 +25,8 @@ def Task2():
     plt.show()
 
     #Bar chart
+    students = ["April","Brian","Charles","Daisy","David"]
+    scores = [4,7.4,5,8,9]
     plt.bar(students, scores)
     plt.xlabel("Student")
     plt.ylabel("Score")
@@ -46,4 +48,4 @@ def Task2():
     plt.ylabel("Score")
     plt.title("Scores from a pandas DataFrame")
     plt.show()
-Task1()
+Task2()

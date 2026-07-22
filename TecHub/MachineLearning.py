@@ -38,7 +38,7 @@ y = df["price"] #Target
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
-    test_size=0.2,      # 50% test, 50% training
+    test_size=0.2,      # 20% test, 80% training
     random_state=27    # reproducible split
 )
 
@@ -79,6 +79,15 @@ plt.ylabel("Predictions")
 plt.title("Decision Tree Regressor, max_depth=3")
 
 def Task1():
+    X = df.drop(columns=["price"])  # Features
+    y = df["price"]  # Target
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.2,  # 20% test, 80% training
+        random_state=27  # reproducible split
+    )
     # Values of max_depth to test
     max_depth_values = [3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 35, 40, 50]
 
