@@ -174,3 +174,88 @@ for epoch in range(n_epochs):
 
 
     print(f"Epoch {epoch}, training loss = {epoch_loss:.4f}")
+
+#Assignment
+def evaluate_loss(model, data_loader, loss_fn):
+    model.eval()
+
+    total_loss = 0.0
+    total_samples = 0
+
+    with torch.no_grad():
+        for X_batch, y_batch in data_loader:
+            y_pred = model(X_batch)
+            loss = loss_fn(y_pred, y_batch)
+
+            batch_size = X_batch.shape[0]
+            total_loss += loss.item() * batch_size
+            total_samples += batch_size
+
+    average_loss = total_loss / total_samples
+
+    return average_loss
+
+n_epochs = 10
+model = HousePriceNN()
+test_loss, train_loss = [], []
+loss_fn = nn.MSELoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+for epoch in range(n_epochs):
+
+    model.train()
+    total_loss = 0.0
+    total_samples = 0
+
+    for X_batch, y_batch in train_loader:
+
+        y_pred = model(X_batch)
+        loss = loss_fn(y_pred, y_batch)
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        batch_size = X_batch.shape[0]
+        total_loss += loss.item() * batch_size
+        total_samples += batch_size
+
+    train_loss.append(evaluate_loss(model, train_loader, loss_fn))
+    test_loss.append(evaluate_loss(model, test_loader, loss_fn))
+    epoch_loss = total_loss / total_samples
+    #train_loss
+
+
+    print(f"Epoch {epoch}, training loss = {epoch_loss:.4f}")
+
+plt.plot(train_loss)
+plt.plot(test_loss)
+
+'''
+# Assignment
+1. Using the function defined below, modify the training loop to save the **train_loss** and **test_loss** in two lists.
+
+2. Then plot the two lists.
+
+3. Reason on the results.
+
+4. Try to increase the number of epoch to 50, what do you observe?
+
+# Assignment 2:
+
+We now start playing with the ANN.
+
+Start adding a layer and move from
+$8 → 5 \rightarrow 1$
+
+to a more complex:
+$8 → 32 rightarrow 32 \rightarrow  1$
+
+
+Then move to a: $8 → 64 \rightarrow 64 \rightarrow  1$
+
+Finally, even try to add a new layer:
+$8 → 64 \rightarrow 64 \rightarrow 32 \rightarrow 1$
+
+Print both the losses and also the difference between the *test_loss* and the *train_loss* at each epoch for all the cases and draw your conclusions.
+'''

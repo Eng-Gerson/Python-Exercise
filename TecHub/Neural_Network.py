@@ -1,4 +1,4 @@
-'''
+"""
 We now build a very small neural network for regression.
 
 The model has:
@@ -14,7 +14,7 @@ The architecture is:
 Since this is a regression problem, the output layer has no activation function.
 
 The model directly predicts a continuous numerical value.
-'''
+"""
 
 import torch
 import torch.nn as nn
@@ -25,10 +25,14 @@ class HousePriceNN(nn.Module):
 
         self.hidden = nn.Linear(8, 5)
         self.relu = nn.ReLU()
+        #self.hidden2 = nn.Linear(5,5)
+        #self.relu = nn.ReLU()
         self.output = nn.Linear(5, 1)
 
     def forward(self, x):
         x = self.hidden(x)
         x = self.relu(x)
+        #x = self.hidden2(x)
+        #x = self.relu(x)
         x = self.output(x)
         return x
