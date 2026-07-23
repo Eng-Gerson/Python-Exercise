@@ -13,6 +13,7 @@ torch.manual_seed(seed)
 # Load dataset
 data = load_diabetes(as_frame=True)
 
+
 X = data.data
 y = data.target
 
@@ -126,15 +127,15 @@ for epoch in range(n_epochs):
     validation_loss.append(evaluate_loss(model, validation_loader, loss_fn))
 
     epoch_loss = total_loss / total_samples
-    print(f"Epoch {epoch}, training loss = {epoch_loss:.4f}")
+    print(f"Epoch {epoch}, training loss = {epoch_loss:.4f}, validation loss = {validation_loss[epoch]}")
 
-plt.plot(train_loss, label="Train Loss")
+plt.plot(train_loss,label= "Train Loss")
 plt.plot(validation_loss, label="Validation Loss")
 plt.title("Loss")
 plt.show()
 
 print("Test Loss: ",evaluate_loss(model, test_loader, loss_fn))
-# Validation: 2424 Test: 2719 with lr = 0.01, 10 -> 32 -> 32 -> 1 with ReLU and LeakyReLU
-# Validation: 528 Test: 2765 with lr = 0.01, 10 -> 64 -> 32 -> 1 with LeakyReLU
-# Validation: 537 Test: 2621 with lr = 0.01, 10 -> 64 -> 64 -> 1 with Sigmoid and ReLU
-# Validation: Test: 2454 with lr = 0.01, 10 -> 32 -> 32 -> 1 with Sigmoid and LeakyReLU
+#Validation: 2424 Test: 2719 with lr = 0.01, 10 -> 32 -> 32 -> 1 with ReLU and LeakyReLU
+#Validation: 528 Test: 2765 with lr = 0.01, 10 -> 64 -> 32 -> 1 with LeakyReLU
+#Validation: 537 Test: 2621 with lr = 0.01, 10 -> 64 -> 64 -> 1 with Sigmoid and ReLU
+#Validation: 2525 Test: 2454 with lr = 0.01, 10 -> 32 -> 32 -> 1 with Sigmoid and LeakyReLU
