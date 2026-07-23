@@ -5,7 +5,9 @@ from sklearn.preprocessing import StandardScaler
 from torch.utils.data import TensorDataset, DataLoader
 import torch
 from Classifier import CancerClassifierNN
-
+import torch.nn as nn
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # Reproducibility
 seed = 42
@@ -160,3 +162,35 @@ for epoch in range(n_epochs):
             f"train loss = {train_loss:.4f} | "
             f"validation loss = {val_loss:.4f}"
         )
+
+#-
+#--
+#---
+model.eval()
+
+all_true = []
+all_pred = []
+
+with torch.no_grad():
+    for X_batch, y_batch in test_loader:
+
+        # Model output: probabilities, because the model ends with Sigmoid
+        probabilities = model(X_batch)
+
+        # Convert probabilities into predicted classes
+        predictions = (probabilities >= 0.5).float()
+
+        all_true.extend(y_batch.numpy())
+        all_pred.extend(predictions.numpy())
+
+# Confusion matrix
+cm = confusion_matrix(all_true, all_pred)
+
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=["Benign", "Malignant"]
+)
+
+disp.plot()
+plt.title("Confusion matrix")
+plt.show()
