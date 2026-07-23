@@ -4,7 +4,7 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.datasets import load_diabetes
 from sklearn import datasets #Local
 
-my_path = "./Test_data"
+my_path = "Regression/Test_data"
 housing = fetch_california_housing(data_home=my_path, download_if_missing=False)
 diabetes = load_diabetes
 # Load the Iris dataset

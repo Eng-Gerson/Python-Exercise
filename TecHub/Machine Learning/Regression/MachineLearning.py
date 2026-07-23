@@ -68,7 +68,7 @@ mse = mean_squared_error(y_test, y_pred_tree) # sum of all pred (p-r)^2
 rmse = np.sqrt(mse)# ( sum of all pred(p-r)^2 )^0.5
 r2 = r2_score(y_test, y_pred_tree)
 
-print("Decision Tree Regressor, max_depth=3")
+print("Decision FirstScript_Tree Regressor, max_depth=3")
 print("MAE:", mae)
 print("MSE:", mse)
 print("RMSE:", rmse)
@@ -76,7 +76,7 @@ print("RMSE:", rmse)
 plt.scatter(y_test, y_pred_tree)
 plt.xlabel("True values")
 plt.ylabel("Predictions")
-plt.title("Decision Tree Regressor, max_depth=3")
+plt.title("Decision FirstScript_Tree Regressor, max_depth=3")
 
 def Task1():
     X = df.drop(columns=["price"])  # Features
@@ -153,7 +153,7 @@ def Task1():
     rmse = np.sqrt(mse)
     r2 = r2_score(y_test, y_pred_tree)
 
-    print("Decision Tree Regressor, max_depth=3")
+    print("Decision FirstScript_Tree Regressor, max_depth=3")
     print("MAE:", mae)
     print("MSE:", mse)
     print("RMSE:", rmse)
@@ -161,7 +161,7 @@ def Task1():
     plt.scatter(y_test, y_pred_tree)
     plt.xlabel("True values")
     plt.ylabel("Predictions")
-    plt.title("Decision Tree Regressor, max_depth=3")
+    plt.title("Decision FirstScript_Tree Regressor, max_depth=3")
 
     # Separate features and target
     X = df.drop(columns=["price"])
