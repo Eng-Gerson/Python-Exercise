@@ -5,7 +5,7 @@ We have made the neural network deeper.
 
 Intuitively, we might expect:
 
-> more layers = better model
+> more layers = better modelo
 
 However, this is not always true.
 
@@ -21,7 +21,7 @@ This is known as the **vanishing gradient problem**.
 
 ### Small experiment
 
-Now modify the model and test what happens.
+Now modify the modelo and test what happens.
 
 1. Replace the ReLU activation:
 
@@ -34,7 +34,7 @@ nn.Sigmoid()
 ```
 
 2. Add more hidden layers (try 1, 5, 10, 15, 20)
-3. Train the model again.
+3. Train the modelo again.
 4. Compare:
 
 * training loss
@@ -68,5 +68,5 @@ class HousePriceNN(nn.Module):
         x = self.output(x)
         return x
 
-##How a model can be created with a specific number of layers
-## model = HousePriceNN(2)
+##How a modelo can be created with a specific number of layers
+## modelo = HousePriceNN(2)

@@ -41,7 +41,7 @@ from sklearn.datasets import fetch_california_housing
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from Neural_Network import HousePriceNN
+from Neural_Network_2 import HousePriceNN
 import torch
 import pandas as pd
 import torch.nn as nn
@@ -49,7 +49,7 @@ import matplotlib.pyplot as plt
 
 
 # Load the dataset as a pandas DataFrame
-housing = fetch_california_housing(as_frame=True)
+housing = fetch_california_housing(data_home="Test_data",download_if_missing=False,as_frame=True)
 
 # Full dataframe: features + target
 df = housing.frame
@@ -60,7 +60,7 @@ df = df.rename(columns={"MedHouseVal": "price"})
 # Show first rows
 df.head()
 
-plt.figure(figsize=(12, 5))
+#plt.figure(figsize=(12, 5))
 
 X = df.drop(columns=["price"])
 y = df["price"]
@@ -72,12 +72,12 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-X_train.boxplot(rot=45, showfliers=False)
+#X_train.boxplot(rot=45, showfliers=False)
 
-plt.title("Box plots of training features before scaling")
-plt.ylabel("Feature value")
-plt.tight_layout()
-plt.show()
+#plt.title("Box plots of training features before scaling")
+#plt.ylabel("Feature value")
+#plt.tight_layout()
+#plt.show()
 
 scaler = StandardScaler()
 
@@ -89,14 +89,14 @@ X_train_scaled_df = pd.DataFrame(
     columns=X_train.columns,
     index=X_train.index
 )
-plt.figure(figsize=(12, 5))
+#plt.figure(figsize=(12, 5))
 
-X_train_scaled_df.boxplot(rot=45, showfliers=False)
+#X_train_scaled_df.boxplot(rot=45, showfliers=False)
 
-plt.title("Box plots of training features after scaling")
-plt.ylabel("Feature value")
-plt.tight_layout()
-plt.show()
+#plt.title("Box plots of training features after scaling")
+#plt.ylabel("Feature value")
+#plt.tight_layout()
+#plt.show()
 #---------------------------------#
 #        Neural Network           #
 #---------------------------------#
@@ -131,21 +131,21 @@ test_loader = DataLoader(
 
 Instead of using the entire training set at once, we train the neural network using mini-batches.
 
-At each step, the model sees only a small subset of the training data.
+At each step, the modelo sees only a small subset of the training data.
 
 For each mini-batch, PyTorch performs the same sequence of operations:
 
 1. Compute the predictions
 2. Compute the loss
 3. Compute the gradients
-4. Update the model parameters
+4. Update the modelo parameters
 
 This process is repeated for all batches in the training set.
 
 One complete pass over the full training set is called an **epoch**.
 '''
 n_epochs = 10
-model = HousePriceNN()
+model = HousePriceNN(2)
 
 loss_fn = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
@@ -195,11 +195,11 @@ def evaluate_loss(model, data_loader, loss_fn):
 
     return average_loss
 
-n_epochs = 10
-model = HousePriceNN()
+n_epochs = 31
+model = HousePriceNN(3)
 test_loss, train_loss = [], []
 loss_fn = nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
 
 for epoch in range(n_epochs):
 
@@ -227,10 +227,13 @@ for epoch in range(n_epochs):
 
 
     print(f"Epoch {epoch}, training loss = {epoch_loss:.4f}")
+print(train_loss)
+print(test_loss)
 
 plt.plot(train_loss)
 plt.plot(test_loss)
-
+plt.title("Loss function")
+plt.show()
 '''
 # Assignment
 1. Using the function defined below, modify the training loop to save the **train_loss** and **test_loss** in two lists.

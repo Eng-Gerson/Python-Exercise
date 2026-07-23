@@ -55,7 +55,7 @@ tree_model = DecisionTreeRegressor(
     min_samples_split=2,
 )
 
-# Train the model
+# Train the modelo
 tree_model.fit(X_train, y_train)
 
 
@@ -96,13 +96,13 @@ def Task1():
 
     for depth in max_depth_values:
 
-        # Define the model
+        # Define the modelo
         model = DecisionTreeRegressor(
          max_depth=depth,
          random_state=42
         )
 
-        # Train the model on the training set
+        # Train the modelo on the training set
         model.fit(X_train, y_train)
 
         # Predict on the test set
@@ -141,7 +141,7 @@ def Task1():
      min_samples_split=2,
     )   
 
-    # Train the model
+    # Train the modelo
     tree_model.fit(X_train, y_train)
     
     # Predict on the test set
@@ -185,13 +185,13 @@ def Task1():
     results = []
 
     for depth in max_depth_values:
-     # Define the model
+     # Define the modelo
      model = DecisionTreeRegressor(
          max_depth=depth,
          random_state=42
      )
 
-     # Train the model on the training set
+     # Train the modelo on the training set
      model.fit(X_train, y_train)
 
      # Predict on the test set

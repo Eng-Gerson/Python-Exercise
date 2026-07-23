@@ -1,7 +1,7 @@
 """
 We now build a very small neural network for regression.
 
-The model has:
+The modelo has:
 
 8 input neurons, one for each feature in the dataset
 1 hidden layer with 5 neurons
@@ -13,7 +13,7 @@ The architecture is:
 
 Since this is a regression problem, the output layer has no activation function.
 
-The model directly predicts a continuous numerical value.
+The modelo directly predicts a continuous numerical value.
 """
 
 import torch
@@ -23,16 +23,16 @@ class HousePriceNN(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.hidden = nn.Linear(8, 5)
+        self.hidden = nn.Linear(8, 32)
         self.relu = nn.ReLU()
-        #self.hidden2 = nn.Linear(5,5)
-        #self.relu = nn.ReLU()
-        self.output = nn.Linear(5, 1)
+        self.hidden2 = nn.Linear(32,16)
+        self.sigmoid = nn.Sigmoid()
+        self.output = nn.Linear(16, 1)
 
     def forward(self, x):
         x = self.hidden(x)
         x = self.relu(x)
-        #x = self.hidden2(x)
-        #x = self.relu(x)
+        x = self.hidden2(x)
+        x = self.sigmoid(x)
         x = self.output(x)
         return x
